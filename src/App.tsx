@@ -8,15 +8,14 @@ function App() {
         base: `"header " "hero " "content " "footer "`,
         lg: `"header header header" "sidebar hero panel" "sidebar content panel"`,
       }}
-      templateColumns={{base: "1fr", lg: "180px 1fr 200px" }}
-      templateRows={{base: "auto", lg: "auto 1fr auto"}}
+      templateColumns={{ base: "1fr", lg: "180px 1fr 200px" }}
+      templateRows={{ base: "auto", lg: "auto 1fr auto" }}
       minH="100vh"
       gap={1}
       p={3}
-      bg="gray.600"
     >
-      <GridItem area="header" >
-        <NavBar/>
+      <GridItem area="header">
+        <NavBar />
       </GridItem>
       <Show above="lg">
         <GridItem area="sidebar" bg="orange.200">
@@ -34,7 +33,6 @@ function App() {
           panel
         </GridItem>
       </Show>
-      
     </Grid>
   );
 }

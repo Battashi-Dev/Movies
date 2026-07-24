@@ -15,8 +15,8 @@ const NavBar = () => {
   return (
     <HStack justify="space-between">
       <HStack>
-        <Icon as={PiFilmSlate} />
-        <Heading fontSize="sm">Movie Discovery App</Heading>
+        <Icon color="brand.accent" as={PiFilmSlate} boxSize="25px" />
+        <Heading fontSize="sm">Movies</Heading>
       </HStack>
       <Box>
         <InputGroup>
