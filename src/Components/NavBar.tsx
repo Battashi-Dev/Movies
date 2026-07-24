@@ -11,6 +11,7 @@ import {
 import { CiSearch } from "react-icons/ci";
 import { PiFilmSlate } from "react-icons/pi";
 import logo from "../assets/images.jpeg";
+import ColorModeToggle from "./ColorModeToggle";
 const NavBar = () => {
   return (
     <HStack justify="space-between">
@@ -27,6 +28,7 @@ const NavBar = () => {
         </InputGroup>
       </Box>
       <HStack>
+        <ColorModeToggle />
         <Image boxSize="30px" borderRadius="full" src={logo} />
       </HStack>
     </HStack>

@@ -8,7 +8,7 @@ function App() {
         base: `"header " "hero " "content " "footer "`,
         lg: `"header header header" "sidebar hero panel" "sidebar content panel"`,
       }}
-      templateColumns={{ base: "1fr", lg: "180px 1fr 200px" }}
+      templateColumns={{ base: "auto", lg: "180px 1fr 200px" }}
       templateRows={{ base: "auto", lg: "auto 1fr auto" }}
       minH="100vh"
       gap={1}
