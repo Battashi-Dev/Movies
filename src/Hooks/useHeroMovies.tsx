@@ -5,6 +5,9 @@ import { CanceledError } from "axios";
 export interface HeroMovie {
   id: number;
   title: string;
+  backdrop_path: string;
+  overview: string;
+  vote_count: number
 }
 
 interface FetchMoviesResponse {
