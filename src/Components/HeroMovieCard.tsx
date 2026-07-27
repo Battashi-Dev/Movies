@@ -1,6 +1,15 @@
-import { Box, Button, Heading, HStack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  HStack,
+  Icon,
+  Tag,
+  Text,
+} from "@chakra-ui/react";
 import type { HeroMovie } from "../Hooks/useHeroMovies";
 import { IMAGE_URL } from "../Services/apiClient";
+import { FaStar } from "react-icons/fa";
 
 interface Props {
   hero: HeroMovie;
@@ -26,13 +35,18 @@ const HeroMovieCard = ({ hero }: Props) => {
         <Heading color="white" size="4xl">
           {hero.title}
         </Heading>
-
+        <HStack>
+        <Tag>
+          <Icon color="goldenrod" as={FaStar} /> {hero.vote_average.toFixed(1)}
+        </Tag>
+        <Tag>{hero.release_date}</Tag>
+        </HStack>
         <Text color="whiteAlpha.800" noOfLines={2} maxW="600px">
           {hero.overview}
         </Text>
         <HStack>
-          <Button bg="brand.accent">Watch Now</Button>
-          <Button>More Info</Button>
+          <Button bg="brand.accent" disabled>Watch Now</Button>
+          <Button disabled>More Info</Button>
         </HStack>
       </Box>
     </Box>

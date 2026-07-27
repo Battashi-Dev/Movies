@@ -7,10 +7,11 @@ export interface HeroMovie {
   title: string;
   backdrop_path: string;
   overview: string;
-  vote_count: number
+  vote_average: number;
+  release_date: string;
 }
 
-interface FetchMoviesResponse {
+interface NowPlayingResponse {
   dates: string;
   page: string;
   results: HeroMovie[];
@@ -23,7 +24,7 @@ const useHeroMovies = () => {
   useEffect(() => {
     const controller = new AbortController();
     apiClient
-      .get<FetchMoviesResponse>("/movie/now_playing", {
+      .get<NowPlayingResponse>("/movie/now_playing", {
         signal: controller.signal,
       })
       .then((res) => setMovies(res.data.results))

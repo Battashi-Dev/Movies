@@ -20,11 +20,11 @@ const NavBar = () => {
         <Heading fontSize="sm">Movies</Heading>
       </HStack>
       <Box>
-        <InputGroup>
+        <InputGroup >
           <InputRightElement>
             <CiSearch />
           </InputRightElement>
-          <Input />
+          <Input disabled />
         </InputGroup>
       </Box>
       <HStack>
