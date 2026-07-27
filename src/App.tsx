@@ -11,7 +11,7 @@ function App() {
         lg: `"header header header" "sidebar hero panel" "sidebar content panel"`,
       }}
       templateColumns={{ base: "auto", lg: "180px 1fr 200px" }}
-      templateRows={{ base: "auto", lg: "auto 1fr auto" }}
+      templateRows={{ base: "auto", lg: "auto" }}
       minH="100vh"
       gap={1}
       p={3}
@@ -24,10 +24,10 @@ function App() {
           sidebar
         </GridItem>
       </Show>
-      <GridItem area="hero">
+      <GridItem area="hero" >
         <HeroMovieGrid />
       </GridItem>
-      <GridItem area="content">
+      <GridItem area="content" minW={0} overflow="hidden">
         <TrendingGrid />
       </GridItem>
       <Show above="lg">

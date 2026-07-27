@@ -10,7 +10,11 @@ const HeroMovieGrid = () => {
   if (error) return <Text>{error}</Text>;
   if (movies.length === 0) return null;
   return (
-    <Box overflow="hidden" borderRadius="lg">
+    <Box
+      overflow="hidden"
+      borderRadius="lg"
+      h={{ base: "250px", md: "400px", lg: "500px" }}
+    >
       <Box
         display="flex"
         transform={`translateX(-${index * 100}%)`}
