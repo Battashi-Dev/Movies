@@ -25,7 +25,7 @@ function App() {
           sidebar
         </GridItem>
       </Show>
-      <GridItem area="hero" >
+      <GridItem area="hero">
         <HeroMovieGrid />
       </GridItem>
       <GridItem area="content" minW={0} overflow="hidden">

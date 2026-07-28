@@ -1,6 +1,7 @@
-import  { Box, Heading, Image } from "@chakra-ui/react";
+import { Box, Heading, Image } from "@chakra-ui/react";
 import type { TopRated } from "../Hooks/useTopRated";
 import { IMAGE_URL } from "../Services/apiClient";
+import CriticalScore from "./CriticalScore";
 
 interface Props {
   rated: TopRated;
@@ -8,7 +9,7 @@ interface Props {
 
 const TopRatedCard = ({ rated }: Props) => {
   return (
-    <Box h="300px" w="200px" flexShrink={0}>
+    <Box h="300px" w="200px" flexShrink={0} position="relative">
       <Image
         src={`${IMAGE_URL}${rated.backdrop_path}`}
         alt={rated.title}
@@ -18,6 +19,9 @@ const TopRatedCard = ({ rated }: Props) => {
         borderRadius="20px"
         pb={2}
       />
+      <Box position="absolute" top="0.5rem" left="0.5rem">
+        <CriticalScore score={rated.vote_average} />
+      </Box>
       <Heading size="sm">{rated.title}</Heading>
     </Box>
   );

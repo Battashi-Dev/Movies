@@ -4,8 +4,8 @@ import apiClient from "../Services/apiClient";
 export interface TopRated {
   id: number;
   title: string;
-  backdrop_path:string;
-  vote_average:number;
+  backdrop_path: string;
+  vote_average: number;
 }
 
 interface TopRatedResponse {

@@ -1,15 +1,7 @@
-import {
-  Box,
-  Button,
-  Heading,
-  HStack,
-  Icon,
-  Tag,
-  Text,
-} from "@chakra-ui/react";
+import { Badge, Box, Button, Heading, HStack, Text } from "@chakra-ui/react";
 import type { HeroMovie } from "../Hooks/useHeroMovies";
 import { IMAGE_URL } from "../Services/apiClient";
-import { FaStar } from "react-icons/fa";
+import CriticalScore from "./CriticalScore";
 
 interface Props {
   hero: HeroMovie;
@@ -25,28 +17,48 @@ const HeroMovieCard = ({ hero }: Props) => {
       borderRadius="lg"
       overflow="hidden"
       objectFit="cover"
-      m={3}
     >
       <Box
         position="absolute"
         inset={0}
         bgGradient="linear(to-t, blackAlpha.800, transparent)"
       />
-      <Box position="absolute" bottom={0} left={0} p={6}>
-        <Heading color="white" size="4xl">
+      <Box
+        position="absolute"
+        bottom={0}
+        left={0}
+        p={6}
+        w="50%"
+        flexWrap="wrap"
+        mb={1}
+      >
+        <Badge mb={5} bg="brand.accent">
+          Now Playing
+        </Badge>
+        <Heading color="white" fontFamily="fantasy" size="3xl">
           {hero.title}
         </Heading>
         <HStack>
-        <Tag>
-          <Icon color="goldenrod" as={FaStar} /> {hero.vote_average.toFixed(1)}
-        </Tag>
-        <Tag>{hero.release_date}</Tag>
+          <CriticalScore score={hero.vote_average} />
+          <Badge variant="ghost" borderRadius="8">
+            {hero.release_date}
+          </Badge>
+          <Badge variant="ghost" borderRadius="8">
+            {hero.original_language}
+          </Badge>
+          {hero.adult && (
+            <Badge variant="ghost" borderRadius="8" colorScheme="red">
+              18+
+            </Badge>
+          )}
         </HStack>
-        <Text color="whiteAlpha.800" noOfLines={2} maxW="600px">
+        <Text color="whiteAlpha.800" maxW="600px">
           {hero.overview}
         </Text>
         <HStack>
-          <Button bg="brand.accent" disabled>Watch Now</Button>
+          <Button bg="brand.accent" disabled>
+            Watch Now
+          </Button>
           <Button disabled>More Info</Button>
         </HStack>
       </Box>

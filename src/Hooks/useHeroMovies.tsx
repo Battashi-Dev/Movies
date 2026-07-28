@@ -9,6 +9,8 @@ export interface HeroMovie {
   overview: string;
   vote_average: number;
   release_date: string;
+  adult: boolean;
+  original_language:string;
 }
 
 interface NowPlayingResponse {
