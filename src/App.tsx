@@ -2,6 +2,7 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./Components/NavBar";
 import HeroMovieGrid from "./Components/HeroMovieGrid";
 import TrendingGrid from "./Components/TrendingGrid";
+import TopRatedGrid from "./Components/TopRatedGrid";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       </GridItem>
       <GridItem area="content" minW={0} overflow="hidden">
         <TrendingGrid />
+        <TopRatedGrid />
       </GridItem>
       <Show above="lg">
         <GridItem area="panel" bg="blue.200">

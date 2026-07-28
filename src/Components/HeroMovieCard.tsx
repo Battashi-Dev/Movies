@@ -24,6 +24,7 @@ const HeroMovieCard = ({ hero }: Props) => {
       bgPosition="center"
       borderRadius="lg"
       overflow="hidden"
+      objectFit="cover"
       m={3}
     >
       <Box
