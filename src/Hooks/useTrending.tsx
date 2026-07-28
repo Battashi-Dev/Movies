@@ -16,14 +16,17 @@ interface TrendingResponse {
 const useTrending = () => {
   const [trending, setTrending] = useState<Trending[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     apiClient
       .get<TrendingResponse>("/trending/movie/week")
       .then((res) => setTrending(res.data.results))
-      .catch((err) => setError(err.message));
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   }, []);
-  return { trending, error };
+  return { trending, error, isLoading };
 };
 
 export default useTrending;

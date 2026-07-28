@@ -16,13 +16,16 @@ interface TopRatedResponse {
 const useTopRated = () => {
   const [topRated, setTopRated] = useState<TopRated[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     apiClient
       .get<TopRatedResponse>("/movie/top_rated")
       .then((res) => setTopRated(res.data.results))
-      .catch((err) => setError(err.message));
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   }, []);
-  return { topRated, error };
+  return { topRated, error, isLoading };
 };
 export default useTopRated;

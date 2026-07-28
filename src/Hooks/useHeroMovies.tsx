@@ -10,7 +10,7 @@ export interface HeroMovie {
   vote_average: number;
   release_date: string;
   adult: boolean;
-  original_language:string;
+  original_language: string;
 }
 
 interface NowPlayingResponse {
@@ -22,9 +22,12 @@ interface NowPlayingResponse {
 const useHeroMovies = () => {
   const [movies, setMovies] = useState<HeroMovie[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const controller = new AbortController();
+
+    setLoading(true);
     apiClient
       .get<NowPlayingResponse>("/movie/now_playing", {
         signal: controller.signal,
@@ -33,11 +36,13 @@ const useHeroMovies = () => {
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
-      });
+      })
+      .finally(() => setLoading(false));
+
     return () => controller.abort();
   }, []);
 
-  return { movies, error };
+  return { movies, error, isLoading };
 };
 
 export default useHeroMovies;
