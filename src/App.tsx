@@ -3,6 +3,7 @@ import NavBar from "./Components/NavBar";
 import HeroMovieGrid from "./Components/HeroMovieGrid";
 import TrendingGrid from "./Components/TrendingGrid";
 import TopRatedGrid from "./Components/TopRatedGrid";
+import GenresList from "./Components/GenresList";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <HeroMovieGrid />
       </GridItem>
       <GridItem area="content" minW={0} overflow="hidden">
+        <GenresList />
         <TrendingGrid />
         <TopRatedGrid />
       </GridItem>
