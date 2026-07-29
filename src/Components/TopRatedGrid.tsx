@@ -4,7 +4,7 @@ import useTopRated from "../Hooks/useTopRated";
 import MovieSkeleton from "./MovieSkeleton";
 
 const TopRatedGrid = () => {
-  const { error, topRated, isLoading } = useTopRated();
+  const { error, data, isLoading } = useTopRated();
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <SimpleGrid>
@@ -15,7 +15,7 @@ const TopRatedGrid = () => {
       <HStack overflow="auto" overflowY="hidden" gap={4}>
         {isLoading &&
           skeletons.map((skeleton) => <MovieSkeleton key={skeleton} />)}
-        {topRated.map((rated) => (
+        {data.map((rated) => (
           <TopRatedCard key={rated.id} rated={rated} />
         ))}
       </HStack>

@@ -2,25 +2,14 @@ import { useEffect, useState } from "react";
 import apiClient from "../Services/apiClient";
 import { CanceledError } from "axios";
 
-export interface HeroMovie {
-  id: number;
-  title: string;
-  backdrop_path: string;
-  overview: string;
-  vote_average: number;
-  release_date: string;
-  adult: boolean;
-  original_language: string;
-}
-
-interface NowPlayingResponse {
+interface FetchResponse<T> {
   dates: string;
   page: string;
-  results: HeroMovie[];
+  results: T[];
 }
 
-const useHeroMovies = () => {
-  const [movies, setMovies] = useState<HeroMovie[]>([]);
+const useData = <T>(endpoint: string) => {
+  const [data, useData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(true);
 
@@ -29,10 +18,10 @@ const useHeroMovies = () => {
 
     setLoading(true);
     apiClient
-      .get<NowPlayingResponse>("/movie/now_playing", {
+      .get<FetchResponse<T>>(endpoint, {
         signal: controller.signal,
       })
-      .then((res) => setMovies(res.data.results))
+      .then((res) => useData(res.data.results))
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
@@ -40,9 +29,9 @@ const useHeroMovies = () => {
       .finally(() => setLoading(false));
 
     return () => controller.abort();
-  }, []);
+  }, [endpoint]);
 
-  return { movies, error, isLoading };
+  return { data, error, isLoading };
 };
 
-export default useHeroMovies;
+export default useData;
