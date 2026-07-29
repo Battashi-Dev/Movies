@@ -1,10 +1,10 @@
 import { Badge, Box, Button, Heading, HStack, Text } from "@chakra-ui/react";
-import type { HeroMovie } from "../Hooks/useHeroMovies";
 import { IMAGE_URL } from "../Services/apiClient";
 import CriticalScore from "./CriticalScore";
+import type { Films } from "./Constant";
 
 interface Props {
-  hero: HeroMovie;
+  hero: Films;
 }
 const HeroMovieCard = ({ hero }: Props) => {
   return (

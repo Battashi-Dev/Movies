@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import apiClient from "../Services/apiClient";
 
-interface Genre {
-  id: number;
+export interface Genre {
+  id:number;
   name: string;
 }
 

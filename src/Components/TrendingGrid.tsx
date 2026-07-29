@@ -3,6 +3,7 @@ import TrendingCard from "./TrendingCard";
 import MovieSkeleton from "./MovieSkeleton";
 import useTrending from "../Hooks/useTrending";
 
+
 const TrendingGrid = () => {
   const { error, data, isLoading } = useTrending();
   const skeletons = [1, 2, 3, 4, 5, 6];

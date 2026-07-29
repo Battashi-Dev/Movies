@@ -1,10 +1,10 @@
 import { Box, Heading, Image } from "@chakra-ui/react";
-import type { Trending } from "../Hooks/useTrending";
 import { IMAGE_URL } from "../Services/apiClient";
 import CriticalScore from "./CriticalScore";
+import type { Films } from "./Constant";
 
 interface Props {
-  trend: Trending;
+  trend: Films;
 }
 
 const TrendingCard = ({ trend }: Props) => {

@@ -4,8 +4,12 @@ import HeroMovieGrid from "./Components/HeroMovieGrid";
 import TrendingGrid from "./Components/TrendingGrid";
 import TopRatedGrid from "./Components/TopRatedGrid";
 import GenresList from "./Components/GenresList";
+import { useState } from "react";
+import MovieGrid from "./Components/MovieGrid";
+import type { Genre } from "./Hooks/useGenres";
 
 function App() {
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   return (
     <Grid
       templateAreas={{
@@ -30,7 +34,8 @@ function App() {
         <HeroMovieGrid />
       </GridItem>
       <GridItem area="content" minW={0} overflow="hidden">
-        <GenresList />
+        <GenresList onSelectedGenre={(genre) => setSelectedGenre(genre)} />
+        {selectedGenre && <MovieGrid selectedGenre={selectedGenre} />}
         <TrendingGrid />
         <TopRatedGrid />
       </GridItem>

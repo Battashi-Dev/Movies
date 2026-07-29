@@ -1,7 +1,10 @@
 import { Box, Heading, HStack, Tag } from "@chakra-ui/react";
-import useGenres from "../Hooks/useGenres";
+import useGenres, { type Genre } from "../Hooks/useGenres";
+interface Props {
+  onSelectedGenre: (genre:Genre) => void;
+}
 
-const GenresList = () => {
+const GenresList = ({onSelectedGenre}: Props) => {
   const { genres } = useGenres();
   return (
     <Box>
@@ -11,6 +14,7 @@ const GenresList = () => {
       <HStack overflow="auto" overflowY="hidden">
         {genres.map((genre) => (
           <Tag
+          onClick={() => onSelectedGenre(genre)}
             key={genre.id}
             _hover={{ bg: "brand.accent" }}
             flexShrink={0}

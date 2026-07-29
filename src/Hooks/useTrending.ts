@@ -1,15 +1,7 @@
+import type { Films } from "../Components/Constant";
 import useData from "./useData";
 
-export interface Trending {
-  id: number;
-  title: string;
-  backdrop_path: string;
-  vote_average: number;
-}
-const useTrending = () => useData<Trending>("/trending/movie/week")
 
-
-  
- 
+const useTrending = () => useData<Films>("/trending/movie/week");
 
 export default useTrending;
