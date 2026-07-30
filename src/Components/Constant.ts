@@ -8,4 +8,7 @@ export interface Films {
   release_date: string;
   adult: boolean;
   original_language: string;
+  popularity: number
+  vote_count: number;
+
 }

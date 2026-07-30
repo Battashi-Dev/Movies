@@ -7,9 +7,11 @@ import GenresList from "./Components/GenresList";
 import { useState } from "react";
 import MovieGrid from "./Components/MovieGrid";
 import type { Genre } from "./Hooks/useGenres";
+import BoxContainer from "./Components/BoxContainer";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  
   return (
     <Grid
       templateAreas={{
@@ -40,8 +42,8 @@ function App() {
         <TopRatedGrid />
       </GridItem>
       <Show above="lg">
-        <GridItem area="panel" bg="blue.200">
-          panel
+        <GridItem area="panel">
+          <BoxContainer />
         </GridItem>
       </Show>
     </Grid>
