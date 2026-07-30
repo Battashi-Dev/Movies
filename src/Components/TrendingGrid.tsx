@@ -1,8 +1,7 @@
 import { Heading, HStack, Text, SimpleGrid } from "@chakra-ui/react";
-import TrendingCard from "./TrendingCard";
 import MovieSkeleton from "./MovieSkeleton";
 import useTrending from "../Hooks/useTrending";
-
+import MoviesCard from "./MoviesCard";
 
 const TrendingGrid = () => {
   const { error, data, isLoading } = useTrending();
@@ -17,7 +16,7 @@ const TrendingGrid = () => {
         {isLoading &&
           skeletons.map((skeleton) => <MovieSkeleton key={skeleton} />)}
         {data.map((trend) => (
-          <TrendingCard key={trend.id} trend={trend} />
+          <MoviesCard key={trend.id} trend={trend} />
         ))}
       </HStack>
     </SimpleGrid>

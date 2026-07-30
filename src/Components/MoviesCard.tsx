@@ -7,7 +7,7 @@ interface Props {
   trend: Films;
 }
 
-const TrendingCard = ({ trend }: Props) => {
+const MoviesCard = ({ trend }: Props) => {
   return (
     <Box h="300px" w="200px" flexShrink={0} position="relative">
       <Image
@@ -27,4 +27,4 @@ const TrendingCard = ({ trend }: Props) => {
   );
 };
 
-export default TrendingCard;
+export default MoviesCard;

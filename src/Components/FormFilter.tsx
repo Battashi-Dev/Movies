@@ -41,7 +41,7 @@ const FormFilter = ({onApply}: Props) => {
           <option value="5">5+</option>
         </Select>
       </FormControl>
-      <Button type="submit" bg="brand.accent">
+      <Button mt={2} borderRadius={8} size="sm" type="submit" bg="brand.accent">
         Apply Filters
       </Button>
     </form>

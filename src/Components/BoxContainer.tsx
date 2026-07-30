@@ -1,8 +1,17 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/react";
 import FormFilter, { type FilterFormData } from "./FormFilter";
 import useData from "../Hooks/useData";
 import { useState } from "react";
 import type { Films } from "./Constant";
+import { IMAGE_URL } from "../Services/apiClient";
 
 const BoxContainer = () => {
   const [filters, setFilters] = useState<FilterFormData>({
@@ -25,8 +34,8 @@ const BoxContainer = () => {
     [filters],
   );
   return (
-    <Box>
-      <Box bg="gray.900" p={3} borderRadius={8}>
+    <Box m={1}>
+      <Box bg="gray.800" p={3} borderRadius={8} mb={3}>
         <Heading fontSize="md" pb={4}>
           Filter
         </Heading>
@@ -34,9 +43,24 @@ const BoxContainer = () => {
       </Box>
       {isLoading && <Text>Loading...</Text>}
       {error && <Text>{error}</Text>}
-      {data.map((movie) => (
-        <div key={movie.id}>{movie.title}</div>
-      ))}
+      <Box bg="gray.800" borderRadius={8}>
+        <List>
+          {data.map((movie) => (
+            <ListItem key={movie.id} py={2}>
+              <HStack>
+                <Image
+                  boxSize="32px"
+                  src={`${IMAGE_URL}${movie.backdrop_path}`}
+                  borderRadius={8}
+                  objectFit="cover"
+                  pl={1}
+                />
+                <Text>{movie.title}</Text>
+              </HStack>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
     </Box>
   );
 };

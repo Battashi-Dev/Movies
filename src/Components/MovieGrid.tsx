@@ -1,11 +1,11 @@
 import { SimpleGrid, Heading, HStack, Text } from "@chakra-ui/react";
 import MovieSkeleton from "./MovieSkeleton";
 import useMovies from "../Hooks/useMovies";
-import TrendingCard from "./TrendingCard";
 import type { Genre } from "../Hooks/useGenres";
+import MoviesCard from "./MoviesCard";
 
 interface Props {
-  selectedGenre: Genre| null;
+  selectedGenre: Genre | null;
 }
 const MovieGrid = ({ selectedGenre }: Props) => {
   const { error, data, isLoading } = useMovies(selectedGenre);
@@ -20,7 +20,7 @@ const MovieGrid = ({ selectedGenre }: Props) => {
         {isLoading &&
           skeletons.map((skeleton) => <MovieSkeleton key={skeleton} />)}
         {data.map((movie) => (
-          <TrendingCard key={movie.id} trend={movie} />
+          <MoviesCard key={movie.id} trend={movie} />
         ))}
       </HStack>
     </SimpleGrid>

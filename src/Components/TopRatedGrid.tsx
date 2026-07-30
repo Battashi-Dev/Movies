@@ -1,7 +1,7 @@
 import { Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
 import useTopRated from "../Hooks/useTopRated";
 import MovieSkeleton from "./MovieSkeleton";
-import TrendingCard from "./TrendingCard";
+import MoviesCard from "./MoviesCard";
 
 const TopRatedGrid = () => {
   const { error, data, isLoading } = useTopRated();
@@ -16,7 +16,7 @@ const TopRatedGrid = () => {
         {isLoading &&
           skeletons.map((skeleton) => <MovieSkeleton key={skeleton} />)}
         {data.map((rated) => (
-          <TrendingCard key={rated.id} trend={rated} />
+          <MoviesCard key={rated.id} trend={rated} />
         ))}
       </HStack>
     </SimpleGrid>
