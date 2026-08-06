@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./Components/NavBar";
 import HeroMovieGrid from "./Components/HeroMovieGrid";
 import TrendingGrid from "./Components/TrendingGrid";
@@ -8,10 +8,11 @@ import { useState } from "react";
 import MovieGrid from "./Components/MovieGrid";
 import type { Genre } from "./Hooks/useGenres";
 import BoxContainer from "./Components/BoxContainer";
+import MenuBar from "./Components/MenuBar";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  
+
   return (
     <Grid
       templateAreas={{
@@ -27,18 +28,30 @@ function App() {
       <GridItem area="header">
         <NavBar />
       </GridItem>
+
       <Show above="lg">
-        <GridItem area="sidebar" bg="orange.200">
-          sidebar
+        <GridItem area="sidebar">
+          <MenuBar />
         </GridItem>
       </Show>
+
       <GridItem area="hero">
-        <HeroMovieGrid />
+        <Box id="homeRef">
+          <HeroMovieGrid />
+        </Box>
       </GridItem>
+
       <GridItem area="content" minW={0} overflow="hidden">
+         <Box id="genreRef">
+          
         <GenresList onSelectedGenre={(genre) => setSelectedGenre(genre)} />
-        {selectedGenre && <MovieGrid selectedGenre={selectedGenre} />}
-        <TrendingGrid />
+        </Box>
+        <Box id="movieRef">
+          <MovieGrid selectedGenre={selectedGenre} />
+        </Box>
+        <Box id="trendRef">
+          <TrendingGrid />
+        </Box>
         <TopRatedGrid />
       </GridItem>
       <Show above="lg">

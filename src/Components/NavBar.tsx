@@ -19,12 +19,12 @@ const NavBar = () => {
         <Icon color="brand.accent" as={PiFilmSlate} boxSize="25px" />
         <Heading fontSize="sm">Movies</Heading>
       </HStack>
-      <Box>
+      <Box flex="0 0 70%">
         <InputGroup>
           <InputRightElement>
             <CiSearch />
           </InputRightElement>
-          <Input disabled />
+          <Input size="md" borderRadius={12} mb={3} disabled />
         </InputGroup>
       </Box>
       <HStack>
